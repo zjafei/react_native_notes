@@ -13,6 +13,7 @@ export default class FlexBox extends Component {
 }
 
 const styles = StyleSheet.create({
+  // ctrl + m 打开调试菜单
   container: {
     flex: 1,
     // flexWrap: 'wrap', // 是因为换行导致的垂直排列 (又这个样式就不能垂直居中了)
