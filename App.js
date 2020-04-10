@@ -20,13 +20,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
   },
   view1: {
-    height: 250,
-    width: 250,
+    height: 150,
+    width: 150,
     backgroundColor: 'red',
   },
   view2: {
-    height: 250,
-    width: 250,
+    height: 150,
+    width: 150,
     backgroundColor: 'green',
   },
 });
