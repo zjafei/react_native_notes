@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { Platform, StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
 
 export default class FlexBox extends Component {
   render() {
@@ -9,9 +9,15 @@ export default class FlexBox extends Component {
           <TextInput style={styles.input} placeholder="搜索商品" />
           <Button style={styles.button} title="搜索" />
         </View>
-        <View style={styles.advertisement}>
-          <Text>轮播广告</Text>
-        </View>
+        <ScrollView
+          ref={(scrollView) => {
+            this.scrollView = scrollView;
+          }}
+          showsHorizontalScrollIndicator={false}
+          horizontal={true}
+        >
+          <Text>轮播广告1</Text>
+        </ScrollView>
         <View style={styles.products}>
           <Text>商品列表</Text>
         </View>
