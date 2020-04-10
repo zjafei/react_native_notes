@@ -5,6 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "tools": "c:\\Users\\Administrator\\AppData\\Local\\Android\\Sdk\\emulator\\emulator.exe -avd Pixel2API28",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint ."
