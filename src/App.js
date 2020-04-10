@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     backgroundColor: 'white',
-    borderWidth: 2,
+    // borderWidth: 2,
   },
   button: {
     flex: 1,
