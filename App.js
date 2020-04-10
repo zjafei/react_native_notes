@@ -15,6 +15,7 @@ export default class FlexBox extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexWrap: 'wrap', // 是因为换行导致的垂直排列
     flexDirection: 'row', // flexDirection 默认是 column
     backgroundColor: 'black',
   },
