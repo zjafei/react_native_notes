@@ -17,19 +17,16 @@ const styles = StyleSheet.create({
     flex: 1,
     // flexWrap: 'wrap', // 是因为换行导致的垂直排列 (又这个样式就不能垂直居中了)
     // flexDirection: 'row', // flexDirection 默认是 column
-    backgroundColor: 'black',
+    backgroundColor: 'gray',
     // justifyContent: 'center', // 内容水平居中
     // alignItems: 'center', // 内容垂直居中
   },
   view1: {
-    height: 150,
-    width: 150,
+    flex: 1,
     backgroundColor: 'red',
   },
   view2: {
-    height: 150,
-    width: 150,
+    flex: 1,
     backgroundColor: 'green',
-    alignSelf: 'center',
   },
 });
