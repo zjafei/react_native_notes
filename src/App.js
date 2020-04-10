@@ -7,7 +7,6 @@ export default class FlexBox extends Component {
       <View style={styles.container}>
         <View style={styles.view1} />
         <View style={styles.view2} />
-        <View style={styles.view2} />
       </View>
     );
   }
