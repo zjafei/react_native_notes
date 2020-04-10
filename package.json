@@ -35,7 +35,7 @@
         "preset": "react-native"
     },
     "lint-staged": {
-        "src/**/*.{js,jsx}": [
+        "**/*.{js,jsx}": [
             "prettier --write",
             "eslint --fix"
         ]
