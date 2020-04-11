@@ -16,7 +16,7 @@ export default class FlexBox extends Component {
           showsHorizontalScrollIndicator={false}
           horizontal={true}
         >
-          <Text>轮播广告1</Text>
+          <Text>轮播广告</Text>
         </ScrollView>
         <View style={styles.products}>
           <Text>商品列表</Text>
