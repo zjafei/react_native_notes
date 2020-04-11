@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
+import { Dimensions, Platform, StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
 
 export default class FlexBox extends Component {
   render() {
@@ -9,15 +9,20 @@ export default class FlexBox extends Component {
           <TextInput style={styles.input} placeholder="搜索商品" />
           <Button style={styles.button} title="搜索" />
         </View>
-        <ScrollView
-          ref={(scrollView) => {
-            this.scrollView = scrollView;
-          }}
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}
-        >
-          <Text>轮播广告</Text>
-        </ScrollView>
+        <View style={styles.advertisement}>
+          <ScrollView
+            ref={(scrollView) => {
+              this.scrollView = scrollView;
+            }}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+            pagingEnabled={true}
+          >
+            <Text style={styles.advertisementItem}>轮播广告1</Text>
+            <Text style={styles.advertisementItem}>轮播广告2</Text>
+            <Text style={styles.advertisementItem}>轮播广告3</Text>
+          </ScrollView>
+        </View>
         <View style={styles.products}>
           <Text>商品列表</Text>
         </View>
@@ -55,8 +60,11 @@ const styles = StyleSheet.create({
   advertisement: {
     height: 180,
     backgroundColor: 'green',
-    justifyContent: 'center',
-    alignItems: 'center',
+  },
+  advertisementItem: {
+    width: Dimensions.get('window').width,
+    height: 180,
+    backgroundColor: 'gray',
   },
   products: {
     flex: 1,
