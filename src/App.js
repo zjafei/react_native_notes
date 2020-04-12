@@ -1,5 +1,16 @@
 import React, { Component } from 'react';
-import { Dimensions, Platform, StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList } from 'react-native';
+import {
+  Dimensions,
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button,
+  ScrollView,
+  FlatList,
+  Alert,
+} from 'react-native';
 
 export default class FlexBox extends Component {
   constructor(props) {
@@ -74,7 +85,13 @@ export default class FlexBox extends Component {
       <>
         <View style={styles.search}>
           <TextInput style={styles.input} placeholder="搜索商品" />
-          <Button style={styles.button} title="搜索" />
+          <Button
+            style={styles.button}
+            title="搜索"
+            onPress={() => {
+              Alert.alert('你点击了按钮');
+            }}
+          />
         </View>
         <View style={styles.advertisement}>
           <ScrollView
