@@ -1,11 +1,43 @@
 import React, { Component } from 'react';
-import { Dimensions, Platform, StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
+import { Dimensions, Platform, StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList } from 'react-native';
 
 export default class FlexBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentPage: 0,
+      dataSource: [
+        { key: 'product0' },
+        { key: 'product1' },
+        { key: 'product2' },
+        { key: 'product3' },
+        { key: 'product4' },
+        { key: 'product5' },
+        { key: 'product6' },
+        { key: 'product7' },
+        { key: 'product8' },
+        { key: 'product9' },
+        { key: 'product10' },
+        { key: 'product11' },
+        { key: 'product12' },
+        { key: 'product13' },
+        { key: 'product14' },
+        { key: 'product15' },
+        { key: 'product16' },
+        { key: 'product17' },
+        { key: 'product18' },
+        { key: 'product19' },
+        { key: 'product20' },
+        { key: 'product21' },
+        { key: 'product22' },
+        { key: 'product23' },
+        { key: 'product24' },
+        { key: 'product25' },
+        { key: 'product26' },
+        { key: 'product27' },
+        { key: 'product28' },
+        { key: 'product29' },
+      ],
     };
   }
 
@@ -17,7 +49,7 @@ export default class FlexBox extends Component {
     clearInterval(this.interval);
   }
 
-  _startTimer() {
+  _startTimer = () => {
     this.interval = setInterval(() => {
       const nextPage = this.state.currentPage + 1 >= 3 ? 0 : this.state.currentPage + 1;
       this.setState({
@@ -29,8 +61,14 @@ export default class FlexBox extends Component {
         animated: true,
       });
     }, 2000);
-  }
-
+  };
+  _renderRow = ({ item }) => {
+    return (
+      <View style={styles.row}>
+        <Text>product: {item.key}</Text>
+      </View>
+    );
+  };
   render() {
     return (
       <>
@@ -53,7 +91,7 @@ export default class FlexBox extends Component {
           </ScrollView>
         </View>
         <View style={styles.products}>
-          <Text>商品列表</Text>
+          <FlatList data={this.state.dataSource} renderItem={this._renderRow} />
         </View>
       </>
     );
@@ -97,7 +135,9 @@ const styles = StyleSheet.create({
   },
   products: {
     flex: 1,
-    backgroundColor: 'blue',
+  },
+  row: {
+    height: 60,
     justifyContent: 'center',
     alignItems: 'center',
   },
