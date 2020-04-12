@@ -51,6 +51,21 @@ export default class FlexBox extends Component {
         { key: 'product28' },
         { key: 'product29' },
       ],
+      advertisements: [
+        {
+          title: 'ad 01',
+          backgroundColor: 'yellow',
+        },
+        {
+          title: 'ad 02',
+          backgroundColor: 'red',
+        },
+        {
+          title: 'ad 03',
+          backgroundColor: 'green',
+        },
+      ],
+      searchText: '',
     };
   }
 
@@ -93,12 +108,21 @@ export default class FlexBox extends Component {
       <>
         <StatusBar backgroundColor="black" />
         <View style={styles.search}>
-          <TextInput style={styles.input} placeholder="搜索商品" />
+          <TextInput
+            style={styles.input}
+            placeholder="搜索商品"
+            value={this.state.searchText}
+            onChangeText={(text) => {
+              this.setState({
+                searchText: text,
+              });
+            }}
+          />
           <Button
             style={styles.button}
             title="搜索"
             onPress={() => {
-              Alert.alert('你点击了按钮');
+              Alert.alert(`搜索: ${this.state.searchText}`);
             }}
           />
         </View>
@@ -111,14 +135,23 @@ export default class FlexBox extends Component {
             horizontal={true}
             pagingEnabled={true}
           >
-            {['轮播广告1', '轮播广告2', '轮播广告3'].map((item) => (
+            {this.state.advertisements.map((item, index) => (
               <TouchableHighlight
-                key={item}
+                key={index}
                 onPress={() => {
-                  Alert.alert(`你点了${item}`);
+                  Alert.alert(`你点了${item.title}`);
                 }}
               >
-                <Text style={styles.advertisementItem}>{item}</Text>
+                <Text
+                  style={[
+                    styles.advertisementItem,
+                    {
+                      backgroundColor: item.backgroundColor,
+                    },
+                  ]}
+                >
+                  {index}-{item.title}
+                </Text>
               </TouchableHighlight>
             ))}
           </ScrollView>
