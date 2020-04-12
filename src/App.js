@@ -10,6 +10,8 @@ import {
   ScrollView,
   FlatList,
   Alert,
+  TouchableHighlight,
+  StatusBar,
 } from 'react-native';
 
 export default class FlexBox extends Component {
@@ -75,14 +77,21 @@ export default class FlexBox extends Component {
   };
   _renderRow = ({ item }) => {
     return (
-      <View style={styles.row}>
-        <Text>product: {item.key}</Text>
-      </View>
+      <TouchableHighlight
+        onPress={() => {
+          Alert.alert(`你点了${item.key}`);
+        }}
+      >
+        <View style={styles.row}>
+          <Text>product: {item.key}</Text>
+        </View>
+      </TouchableHighlight>
     );
   };
   render() {
     return (
       <>
+        <StatusBar backgroundColor="black" />
         <View style={styles.search}>
           <TextInput style={styles.input} placeholder="搜索商品" />
           <Button
@@ -102,9 +111,16 @@ export default class FlexBox extends Component {
             horizontal={true}
             pagingEnabled={true}
           >
-            <Text style={styles.advertisementItem}>轮播广告1</Text>
-            <Text style={styles.advertisementItem}>轮播广告2</Text>
-            <Text style={styles.advertisementItem}>轮播广告3</Text>
+            {['轮播广告1', '轮播广告2', '轮播广告3'].map((item) => (
+              <TouchableHighlight
+                key={item}
+                onPress={() => {
+                  Alert.alert(`你点了${item}`);
+                }}
+              >
+                <Text style={styles.advertisementItem}>{item}</Text>
+              </TouchableHighlight>
+            ))}
           </ScrollView>
         </View>
         <View style={styles.products}>
