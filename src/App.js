@@ -2,6 +2,35 @@ import React, { Component } from 'react';
 import { Dimensions, Platform, StyleSheet, Text, View, TextInput, Button, ScrollView } from 'react-native';
 
 export default class FlexBox extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentPage: 0,
+    };
+  }
+
+  componentDidMount() {
+    this._startTimer();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  _startTimer() {
+    this.interval = setInterval(() => {
+      const nextPage = this.state.currentPage + 1 >= 3 ? 0 : this.state.currentPage + 1;
+      this.setState({
+        currentPage: nextPage,
+      });
+      this.scrollView.scrollResponderScrollTo({
+        x: nextPage * Dimensions.get('window').width,
+        y: 0,
+        animated: true,
+      });
+    }, 2000);
+  }
+
   render() {
     return (
       <>
