@@ -73,6 +73,7 @@ export default class FlexBox extends Component {
         },
       ],
       searchText: '',
+      isRefreshing: false,
     };
   }
 
@@ -115,6 +116,20 @@ export default class FlexBox extends Component {
         </View>
       </TouchableHighlight>
     );
+  };
+
+  _listRefresh = () => {
+    if (this.state.isRefreshing === false) {
+      console.log('isRefreshing');
+      this.setState({
+        isRefreshing: true,
+      });
+      setTimeout(() => {
+        this.setState({
+          isRefreshing: false,
+        });
+      }, 3000);
+    }
   };
 
   _renderSeparator = () => <View style={styles.separator} />;
@@ -173,6 +188,8 @@ export default class FlexBox extends Component {
             data={this.state.dataSource}
             renderItem={this._renderRow}
             ItemSeparatorComponent={this._renderSeparator}
+            onRefresh={this._listRefresh}
+            refreshing={this.state.isRefreshing}
           />
         </View>
       </>
