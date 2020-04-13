@@ -98,6 +98,7 @@ export default class FlexBox extends Component {
     }, 2000);
   };
   _renderRow = ({ item }) => {
+    // console.log(Number(item.key) % 10);
     return (
       <TouchableHighlight
         onPress={() => {
@@ -105,13 +106,18 @@ export default class FlexBox extends Component {
         }}
       >
         <View style={styles.row}>
-          <Image source={require(`./assets/images/pro${Number(item.key) % 10}.jpg`)} style={styles.productImage} />
-          <Text style={styles.productTitle}>名称: {item.title}</Text>
-          <Text style={styles.productSubTitle}>描述: {item.subTitle}</Text>
+          {/* <Image source={require(`./assets/images/pro${Number(item.key) % 10}.jpg`)} style={styles.productImage} /> */}
+          <Image source={item.uri} style={styles.productImage} />
+          <View style={styles.productText}>
+            <Text style={styles.productTitle}>名称: {item.title}</Text>
+            <Text style={styles.productSubTitle}>描述: {item.subTitle}</Text>
+          </View>
         </View>
       </TouchableHighlight>
     );
   };
+
+  _renderSeparator = () => <View style={styles.separator} />;
   render() {
     return (
       <>
@@ -163,7 +169,11 @@ export default class FlexBox extends Component {
           </View>
         </View>
         <View style={styles.products}>
-          <FlatList data={this.state.dataSource} renderItem={this._renderRow} />
+          <FlatList
+            data={this.state.dataSource}
+            renderItem={this._renderRow}
+            ItemSeparatorComponent={this._renderSeparator}
+          />
         </View>
       </>
     );
@@ -233,9 +243,30 @@ const styles = StyleSheet.create({
     backgroundColor: 'orange',
   },
   productImage: {
-    marginLeft: 0,
     width: 40,
     height: 40,
     backgroundColor: 'red',
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  productText: {
+    flex: 1,
+    marginBottom: 10,
+    marginTop: 10,
+  },
+  productTitle: {
+    flex: 3,
+    fontSize: 16,
+  },
+  productSubTitle: {
+    flex: 2,
+    fontSize: 14,
+    color: 'gray',
+  },
+  separator: {
+    height: 1,
+    width: Dimensions.get('window').width - 5,
+    marginLeft: 5,
+    backgroundColor: 'lightgray',
   },
 });
