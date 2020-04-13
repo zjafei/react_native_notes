@@ -24,36 +24,36 @@ export default class FlexBox extends Component {
     this.state = {
       currentPage: 0,
       dataSource: [
-        { key: 'product0' },
-        { key: 'product1' },
-        { key: 'product2' },
-        { key: 'product3' },
-        { key: 'product4' },
-        { key: 'product5' },
-        { key: 'product6' },
-        { key: 'product7' },
-        { key: 'product8' },
-        { key: 'product9' },
-        { key: 'product10' },
-        { key: 'product11' },
-        { key: 'product12' },
-        { key: 'product13' },
-        { key: 'product14' },
-        { key: 'product15' },
-        { key: 'product16' },
-        { key: 'product17' },
-        { key: 'product18' },
-        { key: 'product19' },
-        { key: 'product20' },
-        { key: 'product21' },
-        { key: 'product22' },
-        { key: 'product23' },
-        { key: 'product24' },
-        { key: 'product25' },
-        { key: 'product26' },
-        { key: 'product27' },
-        { key: 'product28' },
-        { key: 'product29' },
+        { uri: require('./assets/images/pro0.jpg'), key: '0', title: 'product0 name', subTitle: 'product0 info' },
+        { uri: require('./assets/images/pro1.jpg'), key: '1', title: 'product1 name', subTitle: 'product1 info' },
+        { uri: require('./assets/images/pro2.jpg'), key: '2', title: 'product2 name', subTitle: 'product2 info' },
+        { uri: require('./assets/images/pro3.jpg'), key: '3', title: 'product3 name', subTitle: 'product3 info' },
+        { uri: require('./assets/images/pro4.jpg'), key: '4', title: 'product4 name', subTitle: 'product4 info' },
+        { uri: require('./assets/images/pro5.jpg'), key: '5', title: 'product5 name', subTitle: 'product5 info' },
+        { uri: require('./assets/images/pro6.jpg'), key: '6', title: 'product6 name', subTitle: 'product6 info' },
+        { uri: require('./assets/images/pro7.jpg'), key: '7', title: 'product7 name', subTitle: 'product7 info' },
+        { uri: require('./assets/images/pro8.jpg'), key: '8', title: 'product8 name', subTitle: 'product8 info' },
+        { uri: require('./assets/images/pro9.jpg'), key: '9', title: 'product9 name', subTitle: 'product9 info' },
+        { uri: require('./assets/images/pro0.jpg'), key: '10', title: 'product10 name', subTitle: 'product10 info' },
+        { uri: require('./assets/images/pro1.jpg'), key: '11', title: 'product11 name', subTitle: 'product11 info' },
+        { uri: require('./assets/images/pro2.jpg'), key: '12', title: 'product12 name', subTitle: 'product12 info' },
+        { uri: require('./assets/images/pro3.jpg'), key: '13', title: 'product13 name', subTitle: 'product13 info' },
+        { uri: require('./assets/images/pro4.jpg'), key: '14', title: 'product14 name', subTitle: 'product14 info' },
+        { uri: require('./assets/images/pro5.jpg'), key: '15', title: 'product15 name', subTitle: 'product15 info' },
+        { uri: require('./assets/images/pro6.jpg'), key: '16', title: 'product16 name', subTitle: 'product16 info' },
+        { uri: require('./assets/images/pro7.jpg'), key: '17', title: 'product17 name', subTitle: 'product17 info' },
+        { uri: require('./assets/images/pro8.jpg'), key: '18', title: 'product18 name', subTitle: 'product18 info' },
+        { uri: require('./assets/images/pro9.jpg'), key: '19', title: 'product19 name', subTitle: 'product19 info' },
+        { uri: require('./assets/images/pro0.jpg'), key: '20', title: 'product20 name', subTitle: 'product20 info' },
+        { uri: require('./assets/images/pro1.jpg'), key: '21', title: 'product21 name', subTitle: 'product21 info' },
+        { uri: require('./assets/images/pro2.jpg'), key: '22', title: 'product22 name', subTitle: 'product22 info' },
+        { uri: require('./assets/images/pro3.jpg'), key: '23', title: 'product23 name', subTitle: 'product23 info' },
+        { uri: require('./assets/images/pro4.jpg'), key: '24', title: 'product24 name', subTitle: 'product24 info' },
+        { uri: require('./assets/images/pro5.jpg'), key: '25', title: 'product25 name', subTitle: 'product25 info' },
+        { uri: require('./assets/images/pro6.jpg'), key: '26', title: 'product26 name', subTitle: 'product26 info' },
+        { uri: require('./assets/images/pro7.jpg'), key: '27', title: 'product27 name', subTitle: 'product27 info' },
+        { uri: require('./assets/images/pro8.jpg'), key: '28', title: 'product28 name', subTitle: 'product28 info' },
+        { uri: require('./assets/images/pro9.jpg'), key: '29', title: 'product29 name', subTitle: 'product29 info' },
       ],
       advertisements: [
         {
@@ -105,7 +105,9 @@ export default class FlexBox extends Component {
         }}
       >
         <View style={styles.row}>
-          <Text>product: {item.key}</Text>
+          <Image source={require(`./assets/images/pro${Number(item.key) % 10}.jpg`)} style={styles.productImage} />
+          <Text style={styles.productTitle}>名称: {item.title}</Text>
+          <Text style={styles.productSubTitle}>描述: {item.subTitle}</Text>
         </View>
       </TouchableHighlight>
     );
@@ -209,7 +211,7 @@ const styles = StyleSheet.create({
   },
   row: {
     height: 60,
-    justifyContent: 'center',
+    flexDirection: 'row',
     alignItems: 'center',
   },
   indicator: {
@@ -229,5 +231,11 @@ const styles = StyleSheet.create({
   },
   circleCur: {
     backgroundColor: 'orange',
+  },
+  productImage: {
+    marginLeft: 0,
+    width: 40,
+    height: 40,
+    backgroundColor: 'red',
   },
 });
