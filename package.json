@@ -12,6 +12,8 @@
         "lint-staged": "lint-staged"
     },
     "dependencies": {
+        "@react-navigation/native": "^5.1.5",
+        "@react-navigation/stack": "^5.2.10",
         "react": "16.13.1",
         "react-native": "0.62.2"
     },
