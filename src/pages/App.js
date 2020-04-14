@@ -6,5 +6,3 @@ export default class Page extends Component {
     return <Home />;
   }
 }
-
-// const styles = StyleSheet.create();
