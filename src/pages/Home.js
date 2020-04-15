@@ -99,11 +99,11 @@ export default class page extends Component {
     }, 2000);
   };
   _renderRow = ({ item }) => {
-    // console.log(Number(item.key) % 10);
+    const { navigation } = this.props;
     return (
       <TouchableHighlight
         onPress={() => {
-          Alert.alert(`你点了${item.key}`);
+          navigation.navigate('Detail', { ...item });
         }}
       >
         <View style={styles.row}>
@@ -167,12 +167,7 @@ export default class page extends Component {
             pagingEnabled={true}
           >
             {this.state.advertisements.map((item, index) => (
-              <TouchableHighlight
-                key={index}
-                onPress={() => {
-                  Alert.alert(`你点了${item.title}`);
-                }}
-              >
+              <TouchableHighlight key={index} onPress={() => {}}>
                 <Image style={styles.advertisementItem} source={{ uri: item.url }} />
               </TouchableHighlight>
             ))}
