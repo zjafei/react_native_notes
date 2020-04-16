@@ -62,6 +62,7 @@ export default class Page extends Component {
           <Stack.Screen
             name="Detail"
             options={({ route: { params } }) => ({
+              // 还可以通过函数输出出设置
               title: `${params.title}详情页`,
             })}
             component={Detail}
