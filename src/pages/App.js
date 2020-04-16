@@ -1,12 +1,24 @@
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, { Component } from 'react';
 import { Button } from 'react-native';
 import Home from './Home';
 import Detail from './Detail';
+import Setting from './Setting';
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function PageTab() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Setting" component={Setting} />
+    </Tab.Navigator>
+  );
+}
 
 export default class Page extends Component {
   render() {
@@ -14,7 +26,7 @@ export default class Page extends Component {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
-            name="Home"
+            name="PageTab"
             options={{
               title: '首页',
               headerStyle: {
@@ -25,7 +37,7 @@ export default class Page extends Component {
                 fontWeight: 'bold',
               },
             }}
-            component={Home}
+            component={PageTab}
           />
           <Stack.Screen
             name="Detail"
