@@ -43,7 +43,30 @@ export default class page extends Component {
             //   });
           }}
         />
-        <Button title="Update the title" onPress={() => navigation.setOptions({ title: 'Updated!' })} />
+        {/* 跳转到 首页的 setting页面  */}
+
+        <Button
+          title="Go to Setting page"
+          onPress={() =>
+            navigation.navigate('PageTab', { screen: 'Setting', params: { text: `this from ${params.title}` } })
+          }
+        />
+        <Button
+          title="Update the title"
+          onPress={() => {
+            // 多层屏幕的嵌套
+            // navigation.navigate('Root', {
+            //   screen: 'Settings',
+            //   params: {
+            //     screen: 'Sound',
+            //     params: {
+            //       screen: 'Media',
+            //     },
+            //   },
+            // });
+            navigation.setOptions({ title: 'Updated!' });
+          }}
+        />
       </ScrollView>
     );
   }

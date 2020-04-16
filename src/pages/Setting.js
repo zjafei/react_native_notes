@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
 export default class page extends Component {
   render() {
+    const {
+      navigation,
+      route: { params },
+    } = this.props;
     return (
       <View>
-        <Text>Setting</Text>
+        <Text>Setting: {params ? params.text : 'nothing'}</Text>
+        <Button
+          title="go to home"
+          onPress={() => {
+            navigation.navigate('PageTab', { screen: 'Home' });
+          }}
+        />
       </View>
     );
   }
