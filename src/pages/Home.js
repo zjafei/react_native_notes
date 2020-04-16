@@ -80,10 +80,10 @@ export default class page extends Component {
 
   componentDidMount() {
     this._startTimer();
-    const { navigation } = this.props;
-    navigation.setOptions({
-      headerRight: () => <Button onPress={() => this.setState({ count: this.state.count + 1 })} title="Update count" />,
-    });
+    // const { navigation } = this.props;
+    // navigation.setOptions({
+    //   headerRight: () => <Button onPress={() => this.setState({ count: this.state.count + 1 })} title="Update count" />,
+    // });
   }
 
   componentWillUnmount() {
