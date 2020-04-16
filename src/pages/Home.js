@@ -80,10 +80,6 @@ export default class page extends Component {
 
   componentDidMount() {
     this._startTimer();
-    const { navigation } = this.props;
-    navigation.setOptions({
-      headerRight: () => <Button onPress={() => this.setState({ count: this.state.count + 1 })} title="Update count" />,
-    });
   }
 
   componentWillUnmount() {
@@ -144,8 +140,7 @@ export default class page extends Component {
     return (
       <>
         <StatusBar backgroundColor="#f4511e" />
-        <Text>{params ? params.textFromDetail : 'nothing'}</Text>
-        <Text>count: {this.state.count}</Text>
+        <Text>来自详情页的信息: {params ? params.message : 'no message'}</Text>
         <View style={styles.search}>
           <TextInput
             style={styles.input}

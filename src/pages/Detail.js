@@ -18,55 +18,26 @@ export default class page extends Component {
           <Text style={styles.productSubTitle}>描述: {params.subTitle}</Text>
         </View>
         <View>
-          <Text style={styles.productSubTitle}>stack: {params.stack}</Text>
+          <Text style={styles.productSubTitle}>访问次数: {params.stack}</Text>
         </View>
-        {/* navigate 不能跳转 因为已经在详情页面了  */}
-        <Button title="Go to Details with navigate" onPress={() => navigation.navigate('Detail')} />
-        {/* push 能跳转 因为可以不停的堆栈  */}
-        <Button
-          title="Go to Details with push"
-          onPress={() => navigation.push('Detail', { ...params, stack: params.stack + 1 })}
-        />
-        {/* goBack 就是消栈  */}
-        <Button title="Go back" onPress={() => navigation.goBack()} />
-        {/* popToTop 就是清栈  */}
-        <Button title="Go back to first screen in stack" onPress={() => navigation.popToTop()} />
-        {/* navigate 可以回传参数给其他页面  */}
-        <Button
-          title="Post some text to Home"
-          onPress={() => {
-            navigation.navigate('Home', { textFromDetail: params.title });
-            // 嵌套页面的参数传递
-            // navigation.navigate('Account', {
-            //     screen: 'Settings',
-            //     params: { user: 'jane' },
-            //   });
-          }}
-        />
-        {/* 跳转到 首页的 setting页面  */}
-
-        <Button
-          title="Go to Setting page"
-          onPress={() =>
-            navigation.navigate('PageTab', { screen: 'Setting', params: { text: `this from ${params.title}` } })
-          }
-        />
-        <Button
-          title="Update the title"
-          onPress={() => {
-            // 多层屏幕的嵌套
-            // navigation.navigate('Root', {
-            //   screen: 'Settings',
-            //   params: {
-            //     screen: 'Sound',
-            //     params: {
-            //       screen: 'Media',
-            //     },
-            //   },
-            // });
-            navigation.setOptions({ title: 'Updated!' });
-          }}
-        />
+        <View style={styles.botMargin}>
+          <Button title="navigate 跳转页面 但是不能跳转到当前页" onPress={() => navigation.navigate('Detail')} />
+        </View>
+        <View style={styles.botMargin}>
+          <Button
+            title="push 不停的堆栈跳转页"
+            onPress={() => navigation.push('Detail', { ...params, stack: params.stack + 1 })}
+          />
+        </View>
+        <View style={styles.botMargin}>
+          <Button title="goBack 返回" onPress={() => navigation.goBack()} />
+        </View>
+        <View style={styles.botMargin}>
+          <Button title="popToTop 回到第一个打开的页面" onPress={() => navigation.popToTop()} />
+        </View>
+        <View style={styles.botMargin}>
+          <Button title="向目标页面传递信息" onPress={() => navigation.navigate('Home', { message: params.title })} />
+        </View>
       </ScrollView>
     );
   }
@@ -84,5 +55,8 @@ const styles = StyleSheet.create({
   productSubTitle: {
     fontSize: 18,
     color: 'gray',
+  },
+  botMargin: {
+    marginBottom: 10,
   },
 });
