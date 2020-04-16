@@ -2,6 +2,7 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React, { Component } from 'react';
+import { Text } from 'react-native';
 import Home from './Home';
 import Detail from './Detail';
 
@@ -22,7 +23,14 @@ export default class Page extends Component {
                 component={Home} // 页面组件
             />
         */}
-        <Stack.Navigator>
+
+        <Stack.Navigator
+          screenOptions={
+            {
+              // screenOptions 设置所有页面的导航组件
+            }
+          }
+        >
           <Stack.Screen
             name="Home"
             options={{
@@ -38,6 +46,12 @@ export default class Page extends Component {
               headerTitleStyle: {
                 fontWeight: 'bold',
               },
+              // headerLeft: 自定义左侧元素
+              // headerTitle: 自定义标题元素
+              // headerRight: 自定义右侧元素
+              headerLeft: () => <Text>左</Text>,
+              headerTitle: () => <Text>自定义标题</Text>,
+              headerRight: () => <Text>右</Text>,
             }}
             component={Home}
           />

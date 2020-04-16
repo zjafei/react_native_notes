@@ -22,7 +22,6 @@ export default class page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 1,
       currentPage: 0,
       dataSource: [
         { uri: require('../assets/images/pro0.jpg'), key: '0', title: 'product0 name', subTitle: 'product0 info' },
@@ -80,10 +79,6 @@ export default class page extends Component {
 
   componentDidMount() {
     this._startTimer();
-    // const { navigation } = this.props;
-    // navigation.setOptions({
-    //   headerRight: () => <Button onPress={() => this.setState({ count: this.state.count + 1 })} title="Update count" />,
-    // });
   }
 
   componentWillUnmount() {
@@ -103,6 +98,7 @@ export default class page extends Component {
       });
     }, 2000);
   };
+
   _renderRow = ({ item }) => {
     const { navigation } = this.props;
     return (
@@ -137,6 +133,7 @@ export default class page extends Component {
   };
 
   _renderSeparator = () => <View style={styles.separator} />;
+
   render() {
     const {
       route: { params },
@@ -144,8 +141,7 @@ export default class page extends Component {
     return (
       <>
         <StatusBar backgroundColor="#f4511e" />
-        <Text>{params ? params.textFromDetail : 'nothing'}</Text>
-        <Text>count: {this.state.count}</Text>
+        <Text>来自详情页的信息: {params ? params.message : 'no message'}</Text>
         <View style={styles.search}>
           <TextInput
             style={styles.input}
