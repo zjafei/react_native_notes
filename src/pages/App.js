@@ -41,6 +41,10 @@ export default class Page extends Component {
               title: '首页',
               headerStyle: {
                 backgroundColor: '#f4511e',
+                shadowOpacity: 0,
+                elevation: 0,
+                boxShadow: '',
+                height: 48,
               },
               headerTintColor: '#fff',
               headerTitleStyle: {
