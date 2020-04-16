@@ -17,54 +17,15 @@ export default class page extends Component {
         <View>
           <Text style={styles.productSubTitle}>描述: {params.subTitle}</Text>
         </View>
-        <View>
-          <Text style={styles.productSubTitle}>stack: {params.stack}</Text>
-        </View>
-        {/* navigate 不能跳转 因为已经在详情页面了  */}
-        <Button title="Go to Details with navigate" onPress={() => navigation.navigate('Detail')} />
-        {/* push 能跳转 因为可以不停的堆栈  */}
         <Button
-          title="Go to Details with push"
-          onPress={() => navigation.push('Detail', { ...params, stack: params.stack + 1 })}
-        />
-        {/* goBack 就是消栈  */}
-        <Button title="Go back" onPress={() => navigation.goBack()} />
-        {/* popToTop 就是清栈  */}
-        <Button title="Go back to first screen in stack" onPress={() => navigation.popToTop()} />
-        {/* navigate 可以回传参数给其他页面  */}
-        <Button
-          title="Post some text to Home"
+          title="传递参数给设置页面"
           onPress={() => {
-            navigation.navigate('Home', { textFromDetail: params.title });
-            // 嵌套页面的参数传递
-            // navigation.navigate('Account', {
-            //     screen: 'Settings',
-            //     params: { user: 'jane' },
-            //   });
-          }}
-        />
-        {/* 跳转到 首页的 setting页面  */}
-
-        <Button
-          title="Go to Setting page"
-          onPress={() =>
-            navigation.navigate('PageTab', { screen: 'Setting', params: { text: `this from ${params.title}` } })
-          }
-        />
-        <Button
-          title="Update the title"
-          onPress={() => {
-            // 多层屏幕的嵌套
-            // navigation.navigate('Root', {
-            //   screen: 'Settings',
-            //   params: {
-            //     screen: 'Sound',
-            //     params: {
-            //       screen: 'Media',
-            //     },
-            //   },
-            // });
-            navigation.setOptions({ title: 'Updated!' });
+            navigation.navigate('PageTab', {
+              screen: 'Setting',
+              params: {
+                text: params.title,
+              },
+            });
           }}
         />
       </ScrollView>

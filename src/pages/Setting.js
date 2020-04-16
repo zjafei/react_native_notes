@@ -9,9 +9,9 @@ export default class page extends Component {
     } = this.props;
     return (
       <View>
-        <Text>Setting: {params ? params.text : 'nothing'}</Text>
+        <Text>设置页面: {params ? params.text : 'nothing'}</Text>
         <Button
-          title="go to home"
+          title="跳转到首页"
           onPress={() => {
             navigation.navigate('PageTab', { screen: 'Home' });
           }}
